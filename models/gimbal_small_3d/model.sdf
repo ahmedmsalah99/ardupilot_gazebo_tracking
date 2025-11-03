@@ -74,11 +74,11 @@
       <axis>
         <xyz>0 1 0</xyz>
         <dynamics>
-          <damping>0.01</damping>
+          <damping>100.0</damping>
         </dynamics>
         <limit>
-          <lower>-3.1415926</lower>
-          <upper>3.1415926</upper>
+          <lower>-0.0001</lower>
+          <upper>0.0001</upper>
         </limit>
       </axis>
       <pose>0.0105 0.065 -0.002 0 0 0</pose>
@@ -122,16 +122,22 @@
       <axis>
         <xyz>0 0 1</xyz>
         <dynamics>
-          <damping>0.01</damping>
+          <damping>100.0</damping>
         </dynamics>
         <limit>
-          <lower>-3.1415926</lower>
-          <upper>3.1415926</upper>
+          <lower>-0.0001</lower>
+          <upper>0.0001</upper>
         </limit>
       </axis>
       <pose>0.0099 0.002 -0.05 0 0 0</pose>
     </joint>
-
+<!--    <link name="camera_link">
+    </link>
+    <joint name="camera_joint" type="fixed">
+	<parent>pitch_link</parent>
+        <child>camera_link</child>
+        <pose>0 0 0 0 0 3.14</pose>
+    </joint> --> 
     <link name="pitch_link">
       <inertial>
         <mass>0.01</mass>
@@ -203,7 +209,7 @@
           </clip>
         </camera>
         <always_on>1</always_on>
-        <update_rate>10</update_rate>
+        <update_rate>60</update_rate>
         <visualize>1</visualize>
 
         <plugin filename="CameraZoomPlugin"
@@ -228,11 +234,11 @@
       <axis>
         <xyz>1 0 0</xyz>
         <dynamics>
-          <damping>0.01</damping>
+          <damping>100.0</damping>
         </dynamics>
         <limit>
-          <lower>-3.1415926</lower>
-          <upper>3.1415926</upper>
+          <lower>0.001</lower>
+          <upper>0.001</upper>
         </limit>
       </axis>
       <pose>0.045 0.0021 0.0199 0 0 0</pose>
