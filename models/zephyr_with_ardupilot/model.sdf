@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.9">
   <model name="zephyr_with_ardupilot">
-    <include>
+    <include merge="true">
       <uri>model://zephyr</uri>
     </include>
 
@@ -25,7 +25,7 @@
       <air_density>1.2041</air_density>
       <forward>0 -1 0</forward>
       <upward>0 0 1</upward>
-      <link_name>zephyr::wing</link_name>
+      <link_name>wing</link_name>
     </plugin>
     <!-- left_wing -->
     <plugin filename="gz-sim-lift-drag-system"
@@ -43,8 +43,8 @@
       <air_density>1.2041</air_density>
       <forward>0 -1 0</forward>
       <upward>0 0 1</upward>
-      <link_name>zephyr::wing</link_name>
-      <control_joint_name>zephyr::flap_left_joint</control_joint_name>
+      <link_name>wing</link_name>
+      <control_joint_name>flap_left_joint</control_joint_name>
       <control_joint_rad_to_cl>-5.0</control_joint_rad_to_cl>
     </plugin>
     <!-- right_wing -->
@@ -63,8 +63,8 @@
       <air_density>1.2041</air_density>
       <forward>0 -1 0</forward>
       <upward>0 0 1</upward>
-      <link_name>zephyr::wing</link_name>
-      <control_joint_name>zephyr::flap_right_joint</control_joint_name>
+      <link_name>wing</link_name>
+      <control_joint_name>flap_right_joint</control_joint_name>
       <control_joint_rad_to_cl>-5.0</control_joint_rad_to_cl>
     </plugin>
     <!-- left_rudder -->
@@ -83,7 +83,7 @@
       <air_density>1.2041</air_density>
       <forward>0 -1 0</forward>
       <upward>1 0 0</upward>
-      <link_name>zephyr::wing</link_name>
+      <link_name>wing</link_name>
     </plugin>
     <!-- right_rudder -->
     <plugin filename="gz-sim-lift-drag-system"
@@ -101,7 +101,7 @@
       <air_density>1.2041</air_density>
       <forward>0 -1 0</forward>
       <upward>1 0 0</upward>
-      <link_name>zephyr::wing</link_name>
+      <link_name>wing</link_name>
     </plugin>
     <!-- propeller_blade_1 -->
     <plugin filename="gz-sim-lift-drag-system"
@@ -119,7 +119,7 @@
       <cp>0 0 0.074205</cp>
       <forward>-1 0 0</forward>
       <upward>0 -1 0</upward>
-      <link_name>zephyr::propeller</link_name>
+      <link_name>propeller</link_name>
     </plugin>
     <!-- propeller_blade_2 -->
     <plugin filename="gz-sim-lift-drag-system"
@@ -137,20 +137,20 @@
       <cp>0 0 -0.074205</cp>
       <forward>1 0 0</forward>
       <upward>0 -1 0</upward>
-      <link_name>zephyr::propeller</link_name>
+      <link_name>propeller</link_name>
     </plugin>
 
     <plugin filename="gz-sim-apply-joint-force-system"
       name="gz::sim::systems::ApplyJointForce">
-      <joint_name>zephyr::propeller_joint</joint_name>
+      <joint_name>propeller_joint</joint_name>
     </plugin>
     <plugin filename="gz-sim-apply-joint-force-system"
       name="gz::sim::systems::ApplyJointForce">
-      <joint_name>zephyr::flap_left_joint</joint_name>
+      <joint_name>flap_left_joint</joint_name>
     </plugin>
     <plugin filename="gz-sim-apply-joint-force-system"
       name="gz::sim::systems::ApplyJointForce">
-      <joint_name>zephyr::flap_right_joint</joint_name>
+      <joint_name>flap_right_joint</joint_name>
     </plugin>
 
     <plugin name="ArduPilotPlugin" filename="ArduPilotPlugin">
@@ -174,7 +174,7 @@
       <gazeboXYZToNED degrees="true">0 0 0 180 0 90</gazeboXYZToNED>
 
       <!-- Sensors -->
-      <imuName>zephyr::imu_link::imu_sensor</imuName>
+      <imuName>imu_link::imu_sensor</imuName>
 
       <!--
           incoming control command [0, 1]
@@ -192,7 +192,7 @@
           SERVO3_TRIM       1100
        -->
       <control channel="2">
-        <jointName>zephyr::propeller_joint</jointName>
+        <jointName>propeller_joint</jointName>
         <useForce>1</useForce>
         <multiplier>838</multiplier>
         <offset>0</offset>
@@ -222,7 +222,7 @@
           scale: 0.524  =>  [-0.524, 0.524]
        -->
       <control channel="0">
-        <jointName>zephyr::flap_left_joint</jointName>
+        <jointName>flap_left_joint</jointName>
         <useForce>1</useForce>
         <multiplier>-1.048</multiplier>
         <offset>-0.5</offset>
@@ -246,7 +246,7 @@
           SERVO2_TRIM       1500
        -->
       <control channel="1">
-        <jointName>zephyr::flap_right_joint</jointName>
+        <jointName>flap_right_joint</jointName>
         <useForce>1</useForce>
         <multiplier>-1.048</multiplier>
         <offset>-0.5</offset>
